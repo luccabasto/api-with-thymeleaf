@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Dentistas</title>
+</head>
+<body>
+<h1>Lista de Dentistas</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Usuário</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dentista : ${listaDentistas}">
+        <td th:text="${dentista.id}"></td>
+        <td th:text="${dentista.usuario}"></td>
+        <td th:text="${dentista.nomeCompleto}"></td>
+        <td th:text="${dentista.email}"></td>
+        <td th:text="${dentista.numeroTelefone}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/}">Voltar</a>
+</body>
+</html>

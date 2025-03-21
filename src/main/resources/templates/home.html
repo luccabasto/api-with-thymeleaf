@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home - Dental App</title>
+</head>
+<body>
+<h1>Bem-vindo ao Dental App</h1>
+<p>Selecione seu tipo de usuário:</p>
+<ul>
+    <li><a th:href="@{/login}">Login</a></li>
+    <li><a th:href="@{/cadastro/cliente}">Cadastrar Cliente</a></li>
+    <li><a th:href="@{/cadastro/dentista}">Cadastrar Dentista</a></li>
+
+</ul>
+</body>
+</html>

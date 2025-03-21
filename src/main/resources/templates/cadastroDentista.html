@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro Dentista</title>
+</head>
+<body>
+<h1>Cadastro de Dentista</h1>
+
+<div th:if="${error != null}" style="color: red;">
+    <p th:text="${error}"></p>
+</div>
+
+<form th:action="@{/cadastro/dentista}" method="post" th:object="${dentista}">
+    <label for="usuario">Usuário (deve iniciar com D):</label>
+    <input type="text" id="usuario" th:field="*{usuario}" /><br/><br/>
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" th:field="*{senha}" /><br/><br/>
+
+    <label for="nomeCompleto">Nome Completo:</label>
+    <input type="text" id="nomeCompleto" th:field="*{nomeCompleto}" /><br/><br/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" /><br/><br/>
+
+    <label for="numeroTelefone">Telefone:</label>
+    <input type="text" id="numeroTelefone" th:field="*{numeroTelefone}" /><br/><br/>
+
+    <label for="dataNascimento">Data de Nascimento:</label>
+    <input type="date" id="dataNascimento" th:field="*{dataNascimento}" /><br/><br/>
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+<a th:href="@{/}">Voltar</a>
+</body>
+</html>
