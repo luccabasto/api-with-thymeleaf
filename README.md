@@ -11,7 +11,7 @@ O projeto desenvolvido é uma aplicação web baseada no padrão MVC utilizando 
 
 * Java & Spring Boot: Plataforma principal para construção da aplicação, facilitando a criação de microserviços e aplicações web robustas.<br/>
 * Gradle: Sistema de build que gerencia dependências e o processo de compilação/execução da aplicação.<br/>
-*Spring Data JPA: Para a abstração e gerenciamento das operações de persistência e mapeamento objeto-relacional (ORM).<br/>
+  * Spring Data JPA: Para a abstração e gerenciamento das operações de persistência e mapeamento objeto-relacional (ORM).<br/>
 * Thymeleaf: Motor de templates que possibilita a criação de páginas HTML dinâmicas e integradas com os dados da aplicação.<br/>
 * Oracle Database: Banco de dados utilizado para armazenar as informações dos usuários, configurado via JDBC.<br/>
 * MVC (Model-View-Controller): Padrão arquitetural que organiza a aplicação em camadas, facilitando a manutenção e escalabilidade.<br/>
