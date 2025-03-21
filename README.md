@@ -19,6 +19,6 @@ O projeto desenvolvido é uma aplicação web baseada no padrão MVC utilizando 
 
 <h4>Integrantes</h4>
 
-Erick Lopes - 553927<br/>
 Lucas Bastos - 553771<br/>
+Erick Lopes - 553927<br/>
 Marcelo Galli - 553654
