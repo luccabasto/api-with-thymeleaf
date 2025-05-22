@@ -1,12 +1,13 @@
 package com.example.odontogenda.models;
 
+import com.example.odontogenda.auth.UsuarioBase;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Entity
 @Table(name = "OG_CLIENTES")
-public class Cliente {
+public class Cliente implements UsuarioBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,21 +22,20 @@ public class Cliente {
     @Column(name = "DATA_NASCIMENTO")
     private LocalDate dataNascimento;
 
-    @Column(name = "NOME_COMPLETO")
+    @Column(name = "NOME_COMPLETO", nullable = false)
     private String nomeCompleto;
 
-    @Column(name = "SENHA")
+    @Column(name = "SENHA", nullable = false)
     private String senha;
 
-    @Column(name = "USUARIO")
-    private String usuario; // Deve começar com 'U'
+    @Column(name = "USUARIO", nullable = false)
+    // Deve começar com 'U'
+    private String usuario;
 
-    // Relacionamento com a tabela de endereço (opcional, se quiser mapear)
-    // @OneToOne
-    // @JoinColumn(name = "ENDERECO_ID")
-    // private Endereco endereco;
+    public Cliente() { }
 
-    public Cliente() {
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -90,10 +90,12 @@ public class Cliente {
         this.usuario = usuario;
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public String getRole() {
+        return "ROLE_CLIENTE";
     }
 
-    // demais getters/setters
-    // ...
+    public Cliente orElse(Object o) {
+        return null;
+    }
 }
