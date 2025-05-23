@@ -1,3 +1,4 @@
+// src/main/java/com/example/odontogenda/services/DentistaService.java
 package com.example.odontogenda.services;
 
 import com.example.odontogenda.models.Dentista;
@@ -5,6 +6,7 @@ import com.example.odontogenda.repositories.DentistaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DentistaService {
@@ -15,23 +17,23 @@ public class DentistaService {
         this.dentistaRepository = dentistaRepository;
     }
 
-    public Dentista salvar(Dentista dentista) {
+    public Dentista save(Dentista dentista) {
         return dentistaRepository.save(dentista);
     }
 
-    public List<Dentista> listarTodos() {
+    public Optional<Dentista> findById(Long id) {
+        return dentistaRepository.findById(id);
+    }
+
+    public Optional<Dentista> findByUsuario(String usuario) {
+        return dentistaRepository.findByUsuario(usuario);
+    }
+
+    public List<Dentista> findAll() {
         return dentistaRepository.findAll();
     }
 
-    public Dentista buscarPorId(Long id) {
-        return dentistaRepository.findById(id).orElse(null);
-    }
-
-    public void deletar(Long id) {
+    public void deleteById(Long id) {
         dentistaRepository.deleteById(id);
-    }
-
-    public Dentista buscarPorUsuario(String usuario) {
-        return dentistaRepository.findByUsuario(usuario);
     }
 }

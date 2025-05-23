@@ -1,8 +1,6 @@
 package com.example.odontogenda.security.service;
 
 import com.example.odontogenda.auth.UsuarioBase;
-import com.example.odontogenda.models.Cliente;
-import com.example.odontogenda.models.Dentista;
 import com.example.odontogenda.repositories.ClienteRepository;
 import com.example.odontogenda.repositories.DentistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+
         UsuarioBase usuario = clienteRepo.findByUsuario(username)
                 .map(c -> (UsuarioBase) c)
                 .or(() -> dentistaRepo.findByUsuario(username).map(d -> (UsuarioBase) d))

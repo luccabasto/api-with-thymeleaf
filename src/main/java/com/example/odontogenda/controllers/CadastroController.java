@@ -6,6 +6,7 @@ import com.example.odontogenda.models.Dentista;
 import com.example.odontogenda.services.ClienteService;
 import com.example.odontogenda.services.DentistaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ public class CadastroController {
     @Autowired
     private DentistaService dentistaService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping("/cliente")
     public String formCliente(Model model, @RequestParam(value="error", required = false) String error) {
         model.addAttribute("cliente", new Cliente());
@@ -31,10 +35,8 @@ public class CadastroController {
 
     @PostMapping("/cliente")
     public String cadastrarCliente(@ModelAttribute Cliente cliente) {
-        if (!cliente.getUsuario().startsWith("U")) {
-            throw new InvalidUserPrefixException("O usuário deve iniciar com 'U' para clientes.", "cliente");
-        }
-        clienteService.salvar(cliente);
+        cliente.setSenha(passwordEncoder.encode(cliente.getSenha()));
+        clienteService.save(cliente);
         return "redirect:/login";
     }
 
@@ -49,10 +51,8 @@ public class CadastroController {
 
     @PostMapping("/dentista")
     public String cadastrarDentista(@ModelAttribute Dentista dentista) {
-        if (!dentista.getUsuario().startsWith("D")) {
-            throw new InvalidUserPrefixException("O usuário deve iniciar com 'D' para dentistas.", "dentista");
-        }
-        dentistaService.salvar(dentista);
+        dentista.setSenha(passwordEncoder.encode(dentista.getSenha()));
+        dentistaService.save(dentista);
         return "redirect:/login";
     }
 }
