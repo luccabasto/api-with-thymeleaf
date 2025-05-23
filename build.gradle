@@ -24,9 +24,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
-	runtimeOnly   'com.oracle.database.jdbc:ojdbc8'
+
+	// ← Spring AI (OpenAI Chat)
+	implementation 'org.springframework.ai:spring-ai-openai:1.0.0-RC1'
+
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc8:19.3.0.0'
 	runtimeOnly 'com.h2database:h2'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
