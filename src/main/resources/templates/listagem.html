@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${tipo == 'cliente'} ? #{listagem.titulo.cliente} : #{listagem.titulo.dentista}">
+        Listagem
+    </title>
+</head>
+<body>
+<h2 th:text="${tipo == 'cliente'} ? #{listagem.titulo.cliente} : #{listagem.titulo.dentista}">
+    Listagem de Usuários
+</h2>
+
+</body>
+</html>

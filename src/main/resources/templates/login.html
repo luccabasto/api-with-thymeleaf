@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8" />
+    <title th:text="#{login.titulo}">Entrar</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-<h1>Login</h1>
 
-<form th:action="@{/login}" method="post">
-    <label for="usuario">Usuário:</label>
-    <input type="text" id="usuario" name="usuario"/><br/><br/>
-
-    <label for="senha">Senha:</label>
-    <input type="password" id="senha" name="senha"/><br/><br/>
-
-    <button type="submit">Entrar</button>
-</form>
-
-<div th:if="${erro != null}">
-    <p th:text="${erro}" style="color:red"></p>
+<!-- seletor de idioma -->
+<div>
+    <span th:text="#{nav.idioma}">Idioma</span>:
+    <a th:href="@{/login(lang='pt')}" th:text="#{nav.portugues}">Português</a> |
+    <a th:href="@{/login(lang='en')}" th:text="#{nav.ingles}">English</a>
 </div>
 
-<a th:href="@{/}">Voltar</a>
+<h2 th:text="#{login.titulo}">Entrar</h2>
+<form th:action="@{/login(lang=${#locale.language})}" method="post">
+    <div>
+        <label th:for="username" th:text="#{login.usuario}">Usuário</label>
+        <input type="text" id="username" name="username" />
+    </div>
+    <div>
+        <label th:for="password" th:text="#{login.senha}">Senha</label>
+        <input type="password" id="password" name="password" />
+    </div>
+    <div>
+        <button type="submit" th:text="#{login.botao}">Login</button>
+    </div>
+
+    <div th:if="${param.error}">
+        <p style="color:red;" th:text="#{login.erro.invalid}">Usuário ou senha inválidos.</p>
+    </div>
+    <div th:if="${param.logout}">
+        <p style="color:green;" th:text="#{login.erro.logout}">Logout realizado com sucesso.</p>
+    </div>
+    <div th:if="${model.erro}">
+        <p style="color:red;" th:text="${model.erro}">Prefixo inválido.</p>
+    </div>
+</form>
+
 </body>
 </html>
