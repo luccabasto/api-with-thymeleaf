@@ -1,4 +1,3 @@
-// src/main/java/com/example/odontogenda/security/service/UserDetailsServiceImpl.java
 package com.example.odontogenda.security.service;
 
 import com.example.odontogenda.auth.UsuarioBase;
